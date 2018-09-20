@@ -25,11 +25,13 @@ data Cmd where
 
 data Env = Nil | Map Name Int Env
 
+data In :: Env -> Name -> Int -> * where
+  EVar :: In
+
 data Eval :: Expr a -> Env -> a -> * where
-  Eval Var e -> 
+  EVar :: In x 
 
 data Step :: Cmd -> Env -> Env -> * where
   SSkip :: Step Skip c c
   SSet :: Step (Set v e) c (Map v e c)
-
 
